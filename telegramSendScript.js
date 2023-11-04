@@ -1,7 +1,7 @@
 async function enviarScript(scriptText){
 	const lines = scriptText.split(/[\n\t]+/).map(line => line.trim()).filter(line => line);
-	main = document.querySelector("div.input-message-input"),
-	textarea = main.querySelector(`div[contenteditable="true"]`)
+	main = document.querySelector(`div.chat-input-main`),
+	textarea = main.querySelector(`div.input-message-input`)
 	
 	if(!textarea) throw new Error("Não há uma conversa aberta")
 	
@@ -13,7 +13,7 @@ async function enviarScript(scriptText){
 		textarea.dispatchEvent(new Event('change', {bubbles: true}));
 	
 		setTimeout(() => {
-			(main.querySelector(`[data-testid="send"]`) || main.querySelector(`[class="btn-send"]`)).click();
+			(main.querySelector(`button.btn-icon.btn-send`)).click();
 		}, 100);
 		
 		if(lines.indexOf(line) !== lines.length - 1) await new Promise(resolve => setTimeout(resolve, 250));
@@ -23,6 +23,10 @@ async function enviarScript(scriptText){
 }
 
 enviarScript(`
-Text here
-Text here
+Joder en Telegram
+Joder en Telegram
+Joder en Telegram
+Joder en Telegram
+Joder en Telegram
+Joder en Telegram
 `).then(e => console.log(`Código finalizado, ${e} mensagens enviadas`)).catch(console.error)
