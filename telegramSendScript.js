@@ -7,14 +7,15 @@ async function enviarScript(scriptText){
 	
 	for(const line of lines){
 		console.log(line)
-	
+
+		main.focus();
 		textarea.focus();
 		document.execCommand('insertText', false, line);
 		textarea.dispatchEvent(new Event('change', {bubbles: true}));
 	
 		setTimeout(() => {
-			(main.querySelector(`button.btn-icon.btn-send`)).click();
-		}, 100);
+			(main.querySelector(`button.send`)).click();
+		}, 200);
 		
 		if(lines.indexOf(line) !== lines.length - 1) await new Promise(resolve => setTimeout(resolve, 250));
 	}
@@ -24,9 +25,5 @@ async function enviarScript(scriptText){
 
 enviarScript(`
 Joder en Telegram
-Joder en Telegram
-Joder en Telegram
-Joder en Telegram
-Joder en Telegram
-Joder en Telegram
 `).then(e => console.log(`Código finalizado, ${e} mensagens enviadas`)).catch(console.error)
+
