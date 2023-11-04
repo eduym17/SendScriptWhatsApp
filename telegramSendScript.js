@@ -13,7 +13,7 @@ async function enviarScript(scriptText){
 		textarea.dispatchEvent(new Event('change', {bubbles: true}));
 	
 		setTimeout(() => {
-			(main.querySelector(`button.send`)).click();
+			(main.querySelector(`span.btn-send-icon-send`)).click();
 		}, 100);
 		
 		if(lines.indexOf(line) !== lines.length - 1) await new Promise(resolve => setTimeout(resolve, 250));
