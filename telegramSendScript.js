@@ -1,6 +1,6 @@
 async function enviarScript(scriptText){
 	const lines = scriptText.split(/[\n\t]+/).map(line => line.trim()).filter(line => line);
-	main = document.querySelector("#main"),
+	main = document.querySelector("div.input-message-input"),
 	textarea = main.querySelector(`div[contenteditable="true"]`)
 	
 	if(!textarea) throw new Error("Não há uma conversa aberta")
